@@ -20,7 +20,7 @@ The **C++ Mastery Roadmap** is divided into six months, each focusing on specifi
 
 - **Week 1: Core Language & Mechanics**  
   - Templates, const correctness, smart pointers, Rule of Five/Zero, move semantics.  
-  - Challenges: Challenge: Build template-based stack/queue with proper const-correctness + RAII.  
+  - Challenges: Build template-based stack/queue with proper const-correctness + RAII.
 
 - **Week 2: STL in Depth**  
   - Containers, iterators, algorithms, lambdas, complexity analysis, ranges (C++20).  
