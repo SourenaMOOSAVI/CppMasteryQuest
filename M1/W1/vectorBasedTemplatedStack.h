@@ -1,16 +1,19 @@
-#ifndef H_STACKVECTBASED
-#define H_STACKVECTBASED
+#ifndef VECTBASEDSTACK_H
+#define VECTBASEDSTACK_H
 
 #include <stdexcept>
 #include <vector>
 
-template <typename T> class StackVectorBased {
+template <typename T> 
+class vectBasedStack {
 private:
   std::vector<T> elements;
 
 public:
   // Push an element onto the stack
-  void push(const T &value) { elements.push_back(value); }
+  void push(const T &value) { 
+    elements.push_back(value); 
+    }
 
   // Pop (remove) an element from the stack
   void pop() {
