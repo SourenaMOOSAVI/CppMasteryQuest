@@ -10,7 +10,7 @@ Here, we move beyond the fundamentals to tackle the features that define modern,
 
 ## **Roadmap Overview**
 
-The **C++ Mastery Roadmap** is divided into six months, each focusing on specific topics and challenges. Below is the structure of the roadmap, along with the resources available:
+The **C++ Mastery Quest** is divided into six months, each focusing on specific topics and challenges. Below is the structure of the roadmap, along with the resources available:
 
 ### **Month 1: Mastering Fundamentals**
 
@@ -20,19 +20,19 @@ The **C++ Mastery Roadmap** is divided into six months, each focusing on specifi
 
 - **Week 1: Core Language & Mechanics**  
   - Templates, const correctness, smart pointers, Rule of Five/Zero, move semantics.  
-  - Challenges: Build template-based stack/queue with proper const-correctness + RAII.
+  - Challenges: Build template-based data structures (e.g. stack/queue) with proper const-correctness + RAII.
 
 - **Week 2: STL in Depth**  
-  - Containers, iterators, algorithms, lambdas, complexity analysis, ranges (C++20).  
-  - Challenges: Implement your own `shared_ptr` → then a simple custom allocator → then expand to a memory pool.
+  - Containers, iterators, algorithms, lambdas, complexity analysis, ranges (`C++20`).  
+  - Challenges: Build a *Data Analyzer* that ingests text/CSV and computes stats using STL.
 
 - **Week 3: Memory Mastery**  
   - RAII, dynamic allocation, alignment, cache, allocators, smart pointer internals.
-  - Challenges: Implement a custom `shared_ptr` and memory pool.  
+  - Challenges: Implement your own `shared_ptr` → then a simple custom allocator → then expand to a memory pool.
 
 - **Week 4: Object-Oriented Programming (OOP)**  
   - Inheritance, polymorphism, SOLID principles, design patterns (Factory, Strategy, Observer).  
-  - Challenges: Build a “Plugin System” where new modules can be dynamically added and managed using OOP principles.
+  - Challenges: Build a *Plugin System* where new modules can be dynamically added and managed using OOP principles.
 
 ---
 
