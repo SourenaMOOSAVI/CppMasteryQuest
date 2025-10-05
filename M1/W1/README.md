@@ -51,7 +51,21 @@ The first week you should focus on mastering essential C++ features (including m
    * `std::weak_ptr` → non-owning observer.
    * Rule of Five/Zero → ensuring correct resource management.  
 
-   *When to use smart pointers?* Pretty much every time you can. They completely automate the memory management which is great since you don't need to be worried about accidental memory leaks. You just need to keep in mind that compared to *raw pointers*, *smart pointers* tend to present some overhead (especially *shared pointers* because of their reference counting system). Between `unique` pointer and `shared` pointer, you should privilege `unique` pointer because of its lower overhead.
+   *When to use smart pointers?* Use them to express ownership semantics when you need dynamic allocation. Smart pointers automate memory management and help prevent leaks, but they're not a universal solution.
+
+   **Guidelines :**
+   * Use `unique_ptr` for exclusive ownership—it has minimal overhead (one indirection)
+   * Use `shared_ptr` only when you truly need shared ownership—it has significant overhead from atomic reference counting and the control block
+   * Use raw pointers or references for non-owning access (observers/borrowers)
+   * Prefer `unique_ptr` over `shared_ptr` whenever possible
+
+   **Performance considerations**: In low-latency and high-performance contexts, even unique_ptr's overhead can matter. Consider:
+   * Avoiding dynamic allocation entirely (stack allocation, value semantics)
+   * Custom allocators (arena/pool allocators for bulk allocations)
+   * Raw pointers with clear ownership conventions in hot paths
+   * Profiling first—premature optimization is real, but so is death by a thousand allocations
+
+   Smart pointers are excellent for general-purpose code, but in performance-critical systems, the best pointer is often no pointer at all.
 
    **Interview Mini Q&A:**
    * ❓ *What is the difference between `std::unique_ptr` and `std::shared_ptr` ?*
