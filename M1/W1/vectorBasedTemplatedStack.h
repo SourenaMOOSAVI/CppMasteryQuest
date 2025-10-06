@@ -1,21 +1,32 @@
+
+// vectorBasedTemplatedStack.h
+// A simple stack implementation using std::vector and templates.
+// Provides push, pop, top, empty, and size operations with dynamic resizing.
+
 #ifndef VECTBASEDSTACK_H
 #define VECTBASEDSTACK_H
 
-#include <stdexcept>
-#include <vector>
 
-template <typename T> 
+#include <stdexcept> // for std::out_of_range
+#include <vector>    // for std::vector
+
+
+// Templated stack class implemented using std::vector as the underlying container.
+// Provides efficient stack operations (LIFO) with automatic memory management.
+template <typename T>
 class vectBasedStack {
 private:
-  std::vector<T> elements;
+  std::vector<T> elements; // Internal storage for stack elements
 
 public:
-  // Push an element onto the stack
-  void push(const T &value) { 
-    elements.push_back(value); 
-    }
+  // Pushes an element onto the top of the stack.
+  // Amortized O(1) time due to vector's dynamic resizing.
+  void push(const T &value) {
+    elements.push_back(value);
+  }
 
-  // Pop (remove) an element from the stack
+  // Removes the top element from the stack.
+  // Throws std::out_of_range if the stack is empty.
   void pop() {
     if (empty()) {
       throw std::out_of_range("Stack is empty");
@@ -23,7 +34,8 @@ public:
     elements.pop_back();
   }
 
-  // get the top element of the stack
+  // Returns a reference to the top element of the stack.
+  // Throws std::out_of_range if the stack is empty.
   T &top() {
     if (empty()) {
       throw std::out_of_range("Stack is empty");
@@ -31,11 +43,12 @@ public:
     return elements.back();
   }
 
-  // Check if the stack is empty
+  // Checks if the stack is empty.
+  // Returns true if there are no elements, false otherwise.
   bool empty() const { return elements.empty(); }
 
-  // Get the size of the stack
+  // Returns the number of elements currently in the stack.
   size_t size() const { return elements.size(); }
 };
 
-#endif
+#endif // VECTBASEDSTACK_H
