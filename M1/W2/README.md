@@ -1,15 +1,35 @@
-# STL Toolbox: Data Analyzer
+# STL in Depth
 
-The idea is to create a **data analysis tool** that reads numerical data from a file, processes it using STL containers, algorithms, and iterators, and provides meaningful statistics and transformations. This project focuses on leveraging the power of the Standard Template Library (STL) to solve practical problems efficiently.
+This week is all about mastering the Standard Template Library (STL) — the foundation of productive, idiomatic, and efficient modern `C++`.
 
-## Concepts to Master
+Understanding STL is crucial for both real-world software development and technical interviews. It teaches you how to think in terms of algorithms and iterators rather than manual loops, how to choose the right containers for performance and clarity, and how to harness lambdas and ranges to write expressive, clean `C++20` code.
+
+By the end of this week, you’ll build a Data Analyzer that processes text or CSV data and computes statistics — all powered by STL containers and algorithms.
+
+## Concepts Covered
 
 1. **STL Containers**:
-   A container is a holder object that stores a collection of other objects (its elements). They are implemented as class templates, which allows great flexibility in the types supported as elements. Containers can be divided into three categories: *sequence containers*, *associative containers*, and *container adapters*.
 
-   - **Sequence Containers**: Implement data structures that can be accessed sequentially. They maintain the ordering of inserted elements that you specify. Common sequence containers are `array` and `vector`.
-   - **Associative Containers**: Implement sorted data structures that can be quickly searched (O(log n) complexity). In associative containers, elements are inserted in a pre-defined order—for example, as sorted ascending. Unordered associative containers are also available. The associative containers can be grouped into two subsets: `maps` and `sets`.
-   - **Container Adapters**: A variation of a sequence or associative container that restricts the interface for simplicity and clarity. Container adapters don't support iterators. `stack` and `queue` are two common container adapters. `stack` adapts a container to provide stack (LIFO - last in, first out - data structure) and `queue` adapts a container to provide queue (FIFO - first in, first out - data structure).
+   STL provides a rich set of generic containers that manage memory, store data, and provide efficient access.
+   Common categories:
+
+   * **Sequence Containers**: `std::vector`, `std::deque`, `std::list`.
+   * **Associative Containers**: `std::set`, `std::map`.
+   * **Unordered containers**: `std::unordered_set`, `std::unordered_map`.
+   * **Container Adapters**: `std::stack`, `std::queue`, `std::priority_queue`.
+
+   **Interview Mini Q&A:**
+
+   * ❓ *When should you use `std::vector` over `std::list`?*
+     * `std::vector` offers contiguous memory and `O(1)` random access, making it ideal for fast traversal. std::list provides `O(1)` insertion/removal but poor cache locality and no random access.
+   * ❓ *What are the differences between `std::map` and `std::unordered_map`?*
+     * `std::map` is ordered (implemented as a red-black tree) with `O(log n)` operations; `std::unordered_map` is hash-based and faster on average `(O(1))` but unordered.
+
+   **Types of interview questions you might face:**
+   * Choose the most efficient container for a scenario.
+   * Implement frequency counters or leaderboards using associative containers.
+   * Analyze container time complexity trade-offs.
+
 
 2. **STL Algorithms**:
    Algorithms are a fundamental part of the C++ Standard Library. Algorithms don't work with containers themselves but rather with iterators. Therefore, the same algorithm can be used by most if not all of the C++ Standard Library containers. The Standard Library Algorithms can come in several categories:
