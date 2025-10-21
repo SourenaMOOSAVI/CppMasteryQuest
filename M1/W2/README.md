@@ -30,106 +30,122 @@ By the end of this week, you’ll build a Data Analyzer that processes text or C
    * Implement frequency counters or leaderboards using associative containers.
    * Analyze container time complexity trade-offs.
 
+2. **Iterators**:
+   Iterators are STL’s abstraction for traversing containers uniformly. They act like smart pointers that give algorithmic access to any container.
 
-2. **STL Algorithms**:
-   Algorithms are a fundamental part of the C++ Standard Library. Algorithms don't work with containers themselves but rather with iterators. Therefore, the same algorithm can be used by most if not all of the C++ Standard Library containers. The Standard Library Algorithms can come in several categories:
+   * Input/output iterators
+   * Forward/bidirectional/random access iterators
+   * Iterator validity (lifetime, invalidation)
 
-   - **Non-modifying Algorithms**: These algorithms do not alter the contents of the container but perform operations like searching, counting, and checking properties. Examples: `std::find`, `std::count`, etc.
-   - **Modifying Algorithms**: These algorithms modify the elements of the container or its structure. Examples: `std::copy`, `std::fill`, `std::remove`, etc.
-   - **Sorting and Partitioning Algorithms**: These algorithms rearrange the elements of a container. Examples: `std::sort`, `std::partition`, etc.
-   - **Set Algorithms**: These algorithms work on sorted ranges and perform set-like operations. Examples: `std::set_union`, `std::set_difference`, etc.
-   - **Heap Algorithms**: These algorithms help work with heaps, which are specialized binary tree-like structures. Examples: `std::make_heap`, `std::push_heap`, etc.
+   **Interview Mini Q&A:**
+   * ❓ *What happens to iterators when you modify a container?*
+     * It depends on the container and operation. For example, inserting into a `std::vector` may invalidate all iterators if reallocation occurs, while `std::list` iterators remain valid unless the erased element is the one being pointed to.
+   * ❓ *What is the difference between an iterator and a pointer?*
+     * An iterator is a generalized pointer that provides a uniform interface to traverse different container types, while a pointer is specific to a memory address.
 
-3. **Iterators**:
-   An **iterator** is an object (like a pointer) that points to an element inside the container. We can use iterators to move through the contents of the container. They can be visualized as something similar to a pointer pointing to some location and we can access content at that particular location using them. Depending upon the functionality of iterators they can be classified into five categories:
+   **Types of interview questions you might face:**
+   * Predict which iterators are invalidated after modifications.
+   * Write algorithms using iterators rather than indices.
+   * Explain how `std::begin()`/`std::end()` enable generic code.
+   * Implement custom iterators for user-defined containers.
 
-   - **Input Iterators**: Used to read a sequence of values.
-   - **Output Iterators**: Used to write a sequence of values.
-   - **Forward Iterators**: Can be read, written, and moved forward.
-   - **Bidirectional Iterators**: Can be read, written, and moved both forward and backward.
-   - **Random-Access Iterators**: Can be read, written, and moved to any element in constant time.
+3. **Algorithms**:
+   STL algorithms are pre-built, efficient, and generic functions operating on iterator ranges.
+   Key groups:
 
-4. **Custom Comparators and Lambda Functions**:
-   Custom comparators and lambda functions are powerful features in C++ that allow you to define custom logic for sorting, searching, or transforming data. In this project, they are used extensively to demonstrate the flexibility and expressiveness of the Standard Template Library (STL).
+   * **Non-modifying**: `std::for_each`, `std::find`, `std::count`
+   * **Modifying**: `std::transform`, `std::remove_if`, `std::sort`
+   * **Numeric**: `std::accumulate`, `std::inner_product`
+   * **Set operations**: `std::set_union`, `std::set_difference`
 
-   - **Lambda Functions**: Lambda functions are anonymous functions that are defined in place, making them ideal for short, specific operations. They are written using the following syntax:
-
-     ```cpp
-     [ capture_clause ] ( parameters ) -> return_type { body }
-     ```
-
-     Example:
-
-     ```cpp
-     auto add = [](int a, int b) -> int { return a + b; };
-     std::cout << add(2, 3); // Outputs: 5
-     ```
-
-   - **Custom Comparators**: Custom comparators are functions or lambda expressions used to define **custom sorting or comparison logic** for STL algorithms. These are particularly useful in operations like `std::sort`, `std::set`, or `std::priority_queue`.
-
-     Example:
+   **Interview Mini Q&A:**
+   * ❓ *How do STL algorithms improve code quality?*
+     * They provide well-tested, optimized implementations that reduce boilerplate code, improve readability, and minimize bugs.
+   * ❓ *Why is std::sort faster than many hand-written sorts?*
+     * `std::sort` uses highly optimized algorithms (like Introsort - a hybrid of quicksort, heapsort, and insertion sort) that adapt to data patterns and leverage low-level optimizations, making them faster than naive implementations.
+   * ❓ *How do you remove elements conditionally from a vector?
+     * Use the erase–remove idiom:
 
      ```cpp
-     std::vector<int> data = {5, 2, 9, 1, 5, 6};
-     std::sort(data.begin(), data.end(), [](int a, int b) { return a > b; }); // Sort in descending order
+     vec.erase(std::remove_if(vec.begin(), vec.end(), predicate), vec.end());
      ```
 
-5. **File I/O with STL Streams**:
-   File I/O operations are essential for reading and writing data to and from files. The C++ Standard Library provides a set of classes for file I/O operations, including `std::ifstream` for reading from files, `std::ofstream` for writing to files, and `std::fstream` for both reading and writing.
+   **Types of interview questions you might face:**
+   * Implement custom algorithms using STL building blocks.
+   * Analyze algorithm time complexities.
+   * Rewrite a manual loop using STL algorithms.
+   * Explain complexity of sorting and searching.
+   * Write code that chains multiple algorithms efficiently.
+
+4. **Lambdas**:
+   Lambdas are **anonymous functions** introduced in `C++11` that allow inline behavior definitions, often passed to algorithms.
+
+   * Syntax: `[captures](parameters) { body }`
+   * Captures: by value `[=]`, by reference `[&]`, or explicit `[&x, y]`
+   * Mutable and return-type specifications
+
+   **Interview Mini Q&A:**
+   * ❓ *When should you use a lambda over a regular function?*
+     * Use lambdas for short, throwaway functions that are used in a limited scope, especially when passing behavior to algorithms. They improve readability by keeping the logic close to its usage.
+   * ❓ *What does the capture list [&] mean?*
+     * It means that all variables used inside the lambda are captured by reference, allowing the lambda to modify those variables in the enclosing scope.
+   * ❓ *What happens when a lambda captures variables by value?*
+     * Copies are made at the time of lambda creation; modifications inside the lambda don’t affect the originals.
+
+   **Types of interview questions you might face:**
+   * Implement a custom sorting criterion using a lambda.
+   * Explain capture semantics and lifetime.
+   * Transform data using `std::transform` and lambdas.
+
+5. **Ranges (C++20)**:
+   Ranges bring **functional programming style** to C++, allowing pipelines of transformations directly on containers.
 
    Example:
 
    ```cpp
-   std::ifstream inputFile("data.txt");
-   std::vector<int> data;
-   int value;
-   while (inputFile >> value) {
-       data.push_back(value);
-   }
-   inputFile.close();
+   #include <ranges>
+   auto evens = data | std::views::filter([](int n){ return n % 2 == 0; });
    ```
 
-## How to run the project
+   **Interview Mini Q&A:**
+   * ❓ *What’s the difference between ranges and traditional iterators?*
+     * Ranges provide a higher-level abstraction that allows chaining operations directly on containers without explicitly managing iterators, leading to more readable and expressive code.
+   * ❓ *What are views?*
+     * Views are lightweight, non-owning wrappers around data sequences that lazily evaluate transformations.
 
-1. **Clone the repository**:
-    Clone the repository to your local machine using the following command:
+   **Types of interview questions you might face:**
+   * Rewrite a sequence of STL algorithms using ranges.
+   * Discuss lazy evaluation and composability in `C++20`.
 
-    ```sh
-    git clone https://github.com/sourenamoosavi/stl-toolbox.git
-    ```
+## Challenge: Data Analyzer
 
-2. **Build the project**:
-    Ensure you have a C++ compiler installed. Then, run the following command to compile the project:
+Build a **Data Analyzer** that reads numerical data from a text or CSV file and computes various statistics using STL containers and algorithms.
 
-    ```sh
-    cd stl-toolbox
-    make
-    ```
+### Requirements
 
-3. **Run the executable**:
-    After building the project, you can run the executable:
+1. Read a text or CSV file.
+2. Store each word or value in an appropriate container (`std::vector`, `std::unordered_map`, etc.).
+3. Compute statistics and display:
+   * Total count of entries.
+   * Frequency of each unique word/value.
+   * Most frequent and least frequent entries.
+   * Average, median, and mode for numerical data.
+4. Use STL algorithms (`std::for_each`, `std::count_if`, `std::sort`, `std::accumulate`, etc.).
+5. Use lambdas extensively for filtering, counting, and transforming data.
+6. Optionally, reimplement part of your pipeline using `C++20` ranges for cleaner code.
 
-    ```sh
-    ./data_analyzer
-    ```
+### Hints
 
-    you should see the following output:
+* Use `std::istringstream` to tokenize words.
+* Use `std::unordered_map<std::string, int>` for frequency counting.
+* Use `std::max_element` and `std::min_element` with custom lambdas to find extremes.
 
-    ```sh
-    Usage: ./data_analyzer [options]
-    Options:
-    --sort            Sort the data
-   --deduplicate     Remove duplicates
-   --stats           Compute statistics (mean, median, mode, range)
-   --transform       Apply transformations (e.g., square each value)
-   --input=<file>    Input file path (required)
-   --output=<file>   Output file path
-   --help            Show this help message
-   ```
+### Learning Outcomes
 
-4. **Run tests**:
-    To ensure everything is working correctly, run the tests:
+By the end of Week 2, you should:
 
-    ```sh
-    ./main_program --input=data/input.txt --output=data/output.txt --stats
-    ```
+* Be fluent with STL containers, iterators, and algorithms.
+* Understand time and space complexity trade-offs between containers.
+* Use lambdas effectively to make your code cleaner and more functional.
+* Write expressive, high-performance data processing pipelines.
+* Be able to handle STL-related interview questions confidently.
