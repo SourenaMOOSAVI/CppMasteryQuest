@@ -134,6 +134,23 @@ Build a **Data Analyzer** that reads numerical data from a text or CSV file and 
 5. Use lambdas extensively for filtering, counting, and transforming data.
 6. Optionally, reimplement part of your pipeline using `C++20` ranges for cleaner code.
 
+### Sample Input
+
+```cpp
+the quick brown fox jumps over the lazy dog the fox
+```
+### Sample Output
+
+```cpp
+Total words: 10
+Unique words: 8
+Most frequent: "the" (3 times)
+Least frequent: "brown", "lazy", "dog", ... (1 time)
+Average word length: 3.8
+Median word length: 4
+Mode word length: 3
+```
+
 ### Hints
 
 * Use `std::istringstream` to tokenize words.
