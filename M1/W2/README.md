@@ -21,7 +21,7 @@ By the end of this week, you’ll build a Data Analyzer that processes text or C
    **Interview Mini Q&A:**
 
    * ❓ *When should you use `std::vector` over `std::list`?*
-     * `std::vector` offers contiguous memory and `O(1)` random access, making it ideal for fast traversal. std::list provides `O(1)` insertion/removal but poor cache locality and no random access.
+     * `std::vector` offers contiguous memory and `O(1)` random access, making it ideal for fast traversal. `std::list` provides `O(1)` insertion/removal but poor cache locality and no random access.
    * ❓ *What are the differences between `std::map` and `std::unordered_map`?*
      * `std::map` is ordered (implemented as a red-black tree) with `O(log n)` operations; `std::unordered_map` is hash-based and faster on average `(O(1))` but unordered.
 
