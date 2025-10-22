@@ -23,11 +23,11 @@ Each month focuses on specific topics, challenges, and projects that build on on
 
 #### Weekly Themes
 
-- **[Week 1: Core Language & Mechanics](Month1/Week1/README.md)**  
+- **[Week 1: Core Language & Mechanics](https://github.com/SourenaMOOSAVI/CppMasteryQuest/blob/main/M1/W1/README.md#core-language--mechanics)**  
   Templates, const correctness, smart pointers, Rule of Five/Zero, and move semantics.  
   *Challenge:* Build template-based data structures (`stack`, `queue`, `dynamic array`) with RAII and const-correctness.
 
-- **[Week 2: STL in Depth](Month1/Week2/README.md)**  
+- **[Week 2: STL in Depth](https://github.com/SourenaMOOSAVI/CppMasteryQuest/blob/main/M1/W2/README.md#stl-in-depth)**  
   Containers, iterators, algorithms, lambdas, complexity analysis, and ranges (`C++20`).  
   *Challenge:* Build a **Data Analyzer** that ingests text/CSV files and computes stats using STL.
 
