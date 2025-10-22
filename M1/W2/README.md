@@ -124,6 +124,8 @@ By the end of this week, you’ll build a Data Analyzer that processes text or C
    * Discuss lazy evaluation and composability in `C++20`.
    * Pipelines using `views::filter`, `views::transform`.
 
+---
+
 ## Challenge: Data Analyzer
 
 Build a **Data Analyzer** that reads numerical data from a text or CSV file and computes various statistics using STL containers and algorithms.
@@ -164,6 +166,8 @@ Mode word length: 3
 * Use `std::istringstream` to tokenize words.
 * Use `std::unordered_map<std::string, int>` for frequency counting.
 * Use `std::max_element` and `std::min_element` with custom lambdas to find extremes.
+
+---
 
 ### Learning Outcomes
 

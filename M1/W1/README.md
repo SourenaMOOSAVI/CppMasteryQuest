@@ -2,9 +2,13 @@
 
 The first week you should focus on mastering essential C++ features (including modern C++) that every intermediate developer must internalize before moving to advanced topics. We’ll explore templates, const correctness, smart pointers, and move semantics, and then apply them to implement generic data structures.
 
+---
+
 ## Concepts to master
 
-1. **Templates**: A template is a construct that generates an ordinary type or function at compile time based on arguments the user supplies for the template parameters. Templates allow writing generic and type-agnostic code. Instead of rewriting data structures (e.g., `stack`, `queue`) for `int`, `double`, or `std::string`, we can write one generic implementation that works with any type.
+1. **Templates**: 
+
+    A template is a construct that generates an ordinary type or function at compile time based on arguments the user supplies for the template parameters. Templates allow writing generic and type-agnostic code. Instead of rewriting data structures (e.g., `stack`, `queue`) for `int`, `double`, or `std::string`, we can write one generic implementation that works with any type.
 
    * Function templates
    * Class templates
@@ -24,7 +28,9 @@ The first week you should focus on mastering essential C++ features (including m
    * Debug or fix template-related compilation errors.
    * Explain why templates can increase compile-time complexity but improve runtime efficiency.
 
-2. **Const Correctness**: The `const` keyword specifies that a variable's value is constant and tells the compiler to prevent the programmer from modifying it. Ensuring const correctness in your code helps prevent accidental modifications and APIs safer and easier to reason about. For example, member functions that do not modify the state of the object should be marked as `const`.
+2. **Const Correctness**:
+
+   The `const` keyword specifies that a variable's value is constant and tells the compiler to prevent the programmer from modifying it. Ensuring const correctness in your code helps prevent accidental modifications and APIs safer and easier to reason about. For example, member functions that do not modify the state of the object should be marked as `const`.
 
    * `const` parameters → avoid accidental modification
    * `const` member functions → enforce read-only access
@@ -44,7 +50,9 @@ The first week you should focus on mastering essential C++ features (including m
    * Spot errors related to const-correctness in given code.
    * Discuss how const correctness affects function overloading.
 
-3. **Smart Pointers**: In modern C++ programming, the Standard Library includes *smart pointers* (`std::unique_ptr`, `std::shared_ptr`, `std::weak_ptr`), which are used to help ensure that programs are free of memory and resource leaks and are exception-safe. Smart pointers are defined in the `std` namespace in the `<memory>` header file. They are crucial to the RAII or *Resource Acquisition Is Initialization* programming idiom.
+3. **Smart Pointers**:
+
+    In modern C++ programming, the Standard Library includes *smart pointers* (`std::unique_ptr`, `std::shared_ptr`, `std::weak_ptr`), which are used to help ensure that programs are free of memory and resource leaks and are exception-safe. Smart pointers are defined in the `std` namespace in the `<memory>` header file. They are crucial to the RAII or *Resource Acquisition Is Initialization* programming idiom.
 
    * `std::unique_ptr` → exclusive ownership, cannot be copied, only moved.
    * `std::shared_ptr` → shared ownership, reference counting, can be copied.
@@ -78,7 +86,9 @@ The first week you should focus on mastering essential C++ features (including m
    * Explain how reference counting works in `shared_ptr`.
    * Debug memory leak issues raw pointers vs. smart pointers.
 
-4. **Move Semantics & Rule of Five/Zero**: `C++11` introduced move semantics to optimize performance by avoiding deep copies of temporary objects. It **casts** (interprets) an object into an **rvalue reference** (`T&&`) to signal that the object's resources can be **transferred**. This is useful for optimizing performance by avoiding unnecessary copies.
+4. **Move Semantics & Rule of Five/Zero**: 
+
+    `C++11` introduced move semantics to optimize performance by avoiding deep copies of temporary objects. It **casts** (interprets) an object into an **rvalue reference** (`T&&`) to signal that the object's resources can be **transferred**. This is useful for optimizing performance by avoiding unnecessary copies.
 
    * Copy vs. move constructors
    * Copy vs. move assignment operators
@@ -95,6 +105,8 @@ The first week you should focus on mastering essential C++ features (including m
    * Implement a class with correct Rule of Five behavior.
    * Demonstrate how move semantics improve efficiency with large vectors.
    * Identify when the compiler implicitly generates move/copy functions.
+
+---
 
 ## Challenges
 
@@ -113,6 +125,8 @@ Using the concepts above, implement the following **generic data structures:**
    * Recreate a minimal version of `std::vector`.
    * Implement copy constructor, move constructor, and assignment operators (Rule of Five).
    * Compare performance between copy and move operations.
+
+---
 
 ## Learning Outcomes
 
