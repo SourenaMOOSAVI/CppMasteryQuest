@@ -6,6 +6,8 @@ Understanding STL is crucial for both real-world software development and techni
 
 By the end of this week, you’ll build a Data Analyzer that processes text or CSV data and computes statistics — all powered by STL containers and algorithms.
 
+---
+
 ## Concepts Covered
 
 1. **STL Containers**:
@@ -31,6 +33,7 @@ By the end of this week, you’ll build a Data Analyzer that processes text or C
    * Analyze container time complexity trade-offs.
 
 2. **Iterators**:
+
    Iterators are STL’s abstraction for traversing containers uniformly. They act like smart pointers that give algorithmic access to any container.
 
    * Input/output iterators
@@ -50,6 +53,7 @@ By the end of this week, you’ll build a Data Analyzer that processes text or C
    * Implement custom iterators for user-defined containers.
 
 3. **Algorithms**:
+
    STL algorithms are pre-built, efficient, and generic functions operating on iterator ranges.
    Key groups:
 
@@ -78,6 +82,7 @@ By the end of this week, you’ll build a Data Analyzer that processes text or C
    * Write code that chains multiple algorithms efficiently.
 
 4. **Lambdas**:
+
    Lambdas are **anonymous functions** introduced in `C++11` that allow inline behavior definitions, often passed to algorithms.
 
    * Syntax: `[captures](parameters) { body }`
@@ -98,6 +103,7 @@ By the end of this week, you’ll build a Data Analyzer that processes text or C
    * Transform data using `std::transform` and lambdas.
 
 5. **Ranges (C++20)**:
+
    Ranges bring **functional programming style** to `C++`, allowing pipelines of transformations directly on containers.
 
    Example:
