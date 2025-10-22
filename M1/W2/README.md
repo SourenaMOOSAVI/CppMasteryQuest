@@ -61,9 +61,9 @@ By the end of this week, you’ll build a Data Analyzer that processes text or C
    **Interview Mini Q&A:**
    * ❓ *How do STL algorithms improve code quality?*
      * They provide well-tested, optimized implementations that reduce boilerplate code, improve readability, and minimize bugs.
-   * ❓ *Why is std::sort faster than many hand-written sorts?*
+   * ❓ *Why is `std::sort` faster than many hand-written sorts?*
      * `std::sort` uses highly optimized algorithms (like Introsort - a hybrid of quicksort, heapsort, and insertion sort) that adapt to data patterns and leverage low-level optimizations, making them faster than naive implementations.
-   * ❓ *How do you remove elements conditionally from a vector?
+   * ❓ *How do you remove elements conditionally from a vector?*
      * Use the erase–remove idiom:
 
      ```cpp
@@ -87,7 +87,7 @@ By the end of this week, you’ll build a Data Analyzer that processes text or C
    **Interview Mini Q&A:**
    * ❓ *When should you use a lambda over a regular function?*
      * Use lambdas for short, throwaway functions that are used in a limited scope, especially when passing behavior to algorithms. They improve readability by keeping the logic close to its usage.
-   * ❓ *What does the capture list [&] mean?*
+   * ❓ *What does the capture list `[&]` mean?*
      * It means that all variables used inside the lambda are captured by reference, allowing the lambda to modify those variables in the enclosing scope.
    * ❓ *What happens when a lambda captures variables by value?*
      * Copies are made at the time of lambda creation; modifications inside the lambda don’t affect the originals.
@@ -98,7 +98,7 @@ By the end of this week, you’ll build a Data Analyzer that processes text or C
    * Transform data using `std::transform` and lambdas.
 
 5. **Ranges (C++20)**:
-   Ranges bring **functional programming style** to C++, allowing pipelines of transformations directly on containers.
+   Ranges bring **functional programming style** to `C++`, allowing pipelines of transformations directly on containers.
 
    Example:
 
@@ -116,6 +116,7 @@ By the end of this week, you’ll build a Data Analyzer that processes text or C
    **Types of interview questions you might face:**
    * Rewrite a sequence of STL algorithms using ranges.
    * Discuss lazy evaluation and composability in `C++20`.
+   * Pipelines using `views::filter`, `views::transform`.
 
 ## Challenge: Data Analyzer
 
