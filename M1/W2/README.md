@@ -169,7 +169,7 @@ Mode word length: 3
 
 ---
 
-### Learning Outcomes
+## Learning Outcomes
 
 By the end of Week 2, you should:
 
