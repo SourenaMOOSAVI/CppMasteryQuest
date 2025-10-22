@@ -112,7 +112,9 @@ The first week you should focus on mastering essential C++ features (including m
 
 Using the concepts above, implement the following **generic data structures:**
 
-1. **Template-based Stack/Queue**: Create a stack and queue class using templates. Ensure proper const-correctness and implement RAII principles for memory management.
+1. **Template-based Stack/Queue**:
+
+    Create a stack and queue class using templates. Ensure proper const-correctness and implement RAII principles for memory management.
 
    * Implement the `queue<T>` as a linked-list-based queue.
    * Implement `push`, `pop`, `top` (for stack) / `front`, `back` (for queue), and `isEmpty` and `size` methods.
