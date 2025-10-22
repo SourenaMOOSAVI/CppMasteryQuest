@@ -1,126 +1,171 @@
 # Core Language & Mechanics
 
-The first week you should focus on mastering essential C++ features (including modern C++) that every intermediate developer must internalize before moving to advanced topics. We’ll explore templates, const correctness, smart pointers, and move semantics, and then apply them to implement generic data structures.
+*Mastery is not achieved through shortcuts, but through deliberate practice.*
 
-## Concepts to master
+Week 1 lays the foundation for mastering **modern C++**.  
+This week, you’ll deepen your understanding of templates, const correctness, smart pointers, and move semantics — then apply them to build generic, safe, and efficient data structures.
 
-1. **Templates**: A template is a construct that generates an ordinary type or function at compile time based on arguments the user supplies for the template parameters. Templates allow writing generic and type-agnostic code. Instead of rewriting data structures (e.g., `stack`, `queue`) for `int`, `double`, or `std::string`, we can write one generic implementation that works with any type.
+---
 
-   * Function templates
-   * Class templates
-   * Template specialization
-   * Template deduction
+## Objectives
 
-   **Interview Mini Q&A:**
+By the end of Week 1, you will:
 
-   * ❓ *What is the difference between function overloading and function templates?*
-     * Function overloading defines multiple versions of a function with different parameter types. Function templates define a single generic version that the compiler instantiates for specific types.
-   * ❓ *What is template specialization?*
-     * Template specialization lets you define a custom implementation of a template for a specific type (e.g., optimizing behavior for `bool`).
+- Write **generic, reusable code** using templates.  
+- Apply **const correctness** for safe and predictable APIs.  
+- Manage resources with **RAII and smart pointers**.
+- Implement **Rule of Five/Zero** and **move semantics**.  
+- Build and benchmark custom **template-based data structures**.
 
-   **Types of interview questions you might face:**
+---
 
-   * Implement a generic data structure (e.g., ``stack``, ``queue``, ``linked list``) using templates.
-   * Debug or fix template-related compilation errors.
-   * Explain why templates can increase compile-time complexity but improve runtime efficiency.
+## Study Flow
 
-2. **Const Correctness**: The `const` keyword specifies that a variable's value is constant and tells the compiler to prevent the programmer from modifying it. Ensuring const correctness in your code helps prevent accidental modifications and APIs safer and easier to reason about. For example, member functions that do not modify the state of the object should be marked as `const`.
+1. **Read** each concept section below carefully.  
+2. **Implement** the mini-exercises along the way.  
+3. **Complete** the final challenges.  
+4. **Benchmark & Reflect** — measure how move semantics or ownership choices affect performance.
 
-   * `const` parameters → avoid accidental modification
-   * `const` member functions → enforce read-only access
-   * Pointers to const vs. const pointers
+---
 
-   **Interview Mini Q&A:**
-   * ❓ *What is the difference between `const int *ptr`, `int* const ptr`, and `const int* const ptr`?*
-     * `const int* ptr` → pointer to a constant integer (the integer value cannot be changed through the pointer).
-     * `int* const ptr` → constant pointer to an integer (the pointer itself cannot be changed to point to another address).
-     * `const int* const ptr` → constant pointer to a constant integer (neither the pointer nor the integer value can be changed).
+## 1️⃣ Templates
 
-   * ❓ *Why should member functions that do not modify the object be declared const?*
-     * It allows calling them on const objects and improves API safety.
+Templates allow writing generic code that works with any type. They are one of C++’s most powerful features.
 
-   **Types of interview questions you might face:**
-   * Identify whether a method should be marked `const`.
-   * Spot errors related to const-correctness in given code.
-   * Discuss how const correctness affects function overloading.
+### Learn
 
-3. **Smart Pointers**: In modern C++ programming, the Standard Library includes *smart pointers* (`std::unique_ptr`, `std::shared_ptr`, `std::weak_ptr`), which are used to help ensure that programs are free of memory and resource leaks and are exception-safe. Smart pointers are defined in the `std` namespace in the `<memory>` header file. They are crucial to the RAII or *Resource Acquisition Is Initialization* programming idiom.
+- Function and class templates  
+- Template specialization  
+- Type deduction and constraints (C++20 Concepts)
 
-   * `std::unique_ptr` → exclusive ownership, cannot be copied, only moved.
-   * `std::shared_ptr` → shared ownership, reference counting, can be copied.
-   * `std::weak_ptr` → non-owning observer.
-   * Rule of Five/Zero → ensuring correct resource management.  
+### Mini Q&A
 
-   *When to use smart pointers?* Use them to express ownership semantics when you need dynamic allocation. Smart pointers automate memory management and help prevent leaks, but they're not a universal solution.
+- ❓ *What’s the difference between function overloading and templates?*  
+  Function overloading defines multiple functions for different types.  
+  Templates define a single generic blueprint instantiated at compile time.
 
-   **Guidelines :**
-   * Use `unique_ptr` for exclusive ownership—it has minimal overhead (one indirection)
-   * Use `shared_ptr` only when you truly need shared ownership—it has significant overhead from atomic reference counting and the control block
-   * Use raw pointers or references for non-owning access (observers/borrowers)
-   * Prefer `unique_ptr` over `shared_ptr` whenever possible
+- ❓ *What is template specialization?*  
+  It provides a custom implementation for specific types.
 
-   **Performance considerations**: In low-latency and high-performance contexts, even unique_ptr's overhead can matter. Consider:
-   * Avoiding dynamic allocation entirely (stack allocation, value semantics)
-   * Custom allocators (arena/pool allocators for bulk allocations)
-   * Raw pointers with clear ownership conventions in hot paths
-   * Profiling first—premature optimization is real, but so is death by a thousand allocations
+### Mini Exercise
 
-   Smart pointers are excellent for general-purpose code, but in performance-critical systems, the best pointer is often no pointer at all.
+Implement a function template:
 
-   **Interview Mini Q&A:**
-   * ❓ *What is the difference between `std::unique_ptr` and `std::shared_ptr` ?*
-     * `std::unique_ptr` enforces sole ownership and cannot be copied (only moved). `std::shared_ptr` allows multiple owners via reference counting.
-   * ❓ *Why does `std::weak_ptr` exist?*
-     * To break cyclic dependencies between `std::shared_ptr` objects (avoiding memory leaks).
+```cpp
+template<typename T>
+T max_of_three(const T& a, const T& b, const T& c) {
+    return std::max(std::max(a, b), c);
+}
+```
 
-   **Types of interview questions you might face:**
-   * Implement a simplified version of `unique_ptr` or `shared_ptr`.
-   * Explain how reference counting works in `shared_ptr`.
-   * Debug memory leak issues raw pointers vs. smart pointers.
+Now extend it to accept a custom comparator.
 
-4. **Move Semantics & Rule of Five/Zero**: `C++11` introduced move semantics to optimize performance by avoiding deep copies of temporary objects. It **casts** (interprets) an object into an **rvalue reference** (`T&&`) to signal that the object's resources can be **transferred**. This is useful for optimizing performance by avoiding unnecessary copies.
+---
 
-   * Copy vs. move constructors
-   * Copy vs. move assignment operators
-   * Rule of Five → when to define destructor, copy/move ctor, copy/move assignment
-   * Rule of Zero → prefer RAII types and let the compiler generate defaults
+## 2️⃣ Const Correctness
 
-   **Interview Mini Q&A:**
-   * ❓ *What is the difference between lvalues and rvalue?*
-     * Lvalues have a persistent memory address (like variables), while rlavules are temporary values (like `x + y`).
-   * ❓ *Why do we need move constructors if we already have copy constructors?*
-     * Copying is expensive for large objects (allocates new memory and copies data). Move constructors “steal” resources from temporaries, improving performance.
+`const` ensures immutability and helps enforce clean, safe APIs.
 
-   **Types of interview questions you might face:**
-   * Implement a class with correct Rule of Five behavior.
-   * Demonstrate how move semantics improve efficiency with large vectors.
-   * Identify when the compiler implicitly generates move/copy functions.
+### Learn
 
-## Challenges
+- `const` parameters and member functions
+- `const` pointers vs. pointers to `const`
+- Const overloads
 
-Using the concepts above, implement the following **generic data structures:**
+### Mini Q&A
 
-1. **Template-based Stack/Queue**: Create a stack and queue class using templates. Ensure proper const-correctness and implement RAII principles for memory management.
+- ❓ What’s the difference between `const int*`, `int* const`, and `const int* const`?
+  See [cppreference: const ↗](https://en.cppreference.com/w/cpp/language/cv.html).
 
-   * Implement the `queue<T>` as a linked-list-based queue.
-   * Implement `push`, `pop`, `top` (for stack) / `front`, `back` (for queue), and `isEmpty` and `size` methods.
-   * Ensure the above methods are `const`-correct where applicable.
-   * Use `std::unique_ptr` or `std::shared_ptr` for internal storage to manage dynamic memory safely.
-   * Ensure that member functions that do not modify the state are marked as `const`.
+- ❓ Why mark methods as const?
+  They can be safely called on const objects.
 
-2. **Template-based DynamicArray**
+### Mini Exercise
 
-   * Recreate a minimal version of `std::vector`.
-   * Implement copy constructor, move constructor, and assignment operators (Rule of Five).
-   * Compare performance between copy and move operations.
+Mark every non-modifying method in your stack/queue as `const`.
+Try calling them on `const` instances and observe what the compiler allows or rejects.
 
-## Learning Outcomes
+## 3️⃣ Smart Pointers & RAII
 
-By the end of Week 1, you should:
+Smart pointers automate resource management through ownership semantics.
 
-* Understand how to write generic, reusable C++ code with templates
-* Apply `const` correctness to create safe, predictable APIs.
-* Manage resources automatically with smart pointers and RAII.
-* Appreciate the performance benefits of move semantics and follow the Rule of Five/Zero.
-* Be able to answer common interview questions around these concepts confidently.
-* Gain hands-on experience by building non-trivial data structures that reinforce these concepts.
+### Learn
+
+- `std::unique_ptr`, `std::shared_ptr`, `std::weak_ptr`
+- RAII (Resource Acquisition Is Initialization)
+- Rule of Five/Zero
+
+### Guidelines
+
+| Pointer Type | Ownership | Copyable | Use Case         |
+| ------------ | --------- | -------- | ---------------- |
+| `unique_ptr` | Exclusive | No       | Single ownership |
+| `shared_ptr` | Shared    | Yes      | Shared ownership |
+| `weak_ptr`   | Observer  | No       | Break cycles     |
+
+### Mini Q&A
+
+Implement a minimal `UniquePtr<T>` that supports:
+
+- move constructor and assignment
+- `operator*` and `operator->`
+
+Then test with a small class that prints messages on construction/destruction.
+
+## 4️⃣ Move Semantics & Rule of Five/Zero
+
+Move semantics optimize performance by stealing resources from temporaries instead of copying them.
+
+### Learn
+
+- Copy vs. move constructors/assignments
+- Lvalues vs. rvalues
+- Rule of Five: destructor, copy/move ctor, copy/move assignment
+- Rule of Zero: rely on RAII types when possible
+
+| Concept          | When to Use                                 |
+| ---------------- | ------------------------------------------- |
+| **Rule of Five** | Manual resource management                  |
+| **Rule of Zero** | Use smart pointers/containers for ownership |
+
+### Mini Q&A
+
+Implement a class `DynamicArray<T>` that:
+
+- Implements Rule of Five
+- Demonstrates move vs copy in logs
+- Uses `std::move` to optimize reassignment
+
+Then measure the time difference for copying vs. moving large arrays.
+
+### Final Challenge: Build Template-Based Data Structures
+
+1. Template-based Stack/Queue
+
+    - Build `Stack<T>` and `Queue<T>` using templates.
+    - Use `std::unique_ptr` internally for memory safety.
+    - Ensure const correctness (`const` getters, etc.).
+
+2. Template-based DynamicArray
+
+    - Recreate a simplified `std::vector`.
+    - Implement copy/move constructors and assignment operators.
+    - Compare copy vs move performance for large data.
+
+## Benchmark & Reflect
+
+Profile your `DynamicArray` operations using large data sets.
+
+Measure and compare:
+
+- Copy vs Move construction
+- Raw pointer vs `unique_ptr` memory usage
+- Function call performance differences with and without `const`
+
+Write down what you’ve learned — these observations become invaluable intuition later.
+
+### References
+
+- [cppreference: Templates](https://en.cppreference.com/w/cpp/language/templates)
+- [Effective Modern C++ — Items 1–11](https://www.oreilly.com/library/view/effective-modern-c/9781491908419/)
+- [ISO C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines)
