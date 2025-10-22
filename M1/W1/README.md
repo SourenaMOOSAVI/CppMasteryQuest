@@ -70,15 +70,15 @@ Now extend it to accept a custom comparator.
 
 - `const` parameters and member functions
 - `const` pointers vs. pointers to `const`
-- Const overloads
+- `const` overloads
 
 ### Mini Q&A
 
 - ❓ What’s the difference between `const int*`, `int* const`, and `const int* const`?
-  See [cppreference: const ↗](https://en.cppreference.com/w/cpp/language/cv.html).
+  See <a href="https://en.cppreference.com/w/cpp/language/cv.html" target="_blank" rel="noopener noreferrer">cppreference: const ↗</a>
 
-- ❓ Why mark methods as const?
-  They can be safely called on const objects.
+- ❓ Why mark methods as `const`?
+  They can be safely called on `const` objects.
 
 ### Mini Exercise
 
@@ -166,6 +166,6 @@ Write down what you’ve learned — these observations become invaluable intuit
 
 ### References
 
-- [cppreference: Templates](https://en.cppreference.com/w/cpp/language/templates)
-- [Effective Modern C++ — Items 1–11](https://www.oreilly.com/library/view/effective-modern-c/9781491908419/)
-- [ISO C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines)
+- <a href="https://en.cppreference.com/w/cpp/language/templates" target="_blank" rel="noopener noreferrer">cppreference: Templates ↗</a>
+- <a href="https://www.oreilly.com/library/view/effective-modern-c/9781491908419/" target="_blank" rel="noopener noreferrer">Effective Modern C++ — Items 1–11 ↗</a>
+- <a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines" target="_blank" rel="noopener noreferrer">ISO C++ Core Guidelines ↗</a>
