@@ -130,35 +130,45 @@ By the end of this week, you’ll build a Data Analyzer that processes text or C
 
 Build a **Data Analyzer** that reads numerical data from a text or CSV file and computes various statistics using STL containers and algorithms.
 
-### Requirements
+### Features/Requirements
 
-1. Read a text or CSV file.
-2. Store each word or value in an appropriate container (`std::vector`, `std::unordered_map`, etc.).
-3. Compute statistics and display:
-   * Total count of entries.
-   * Frequency of each unique word/value.
-   * Most frequent and least frequent entries.
-   * Average, median, and mode for numerical data.
-4. Use STL algorithms (`std::for_each`, `std::count_if`, `std::sort`, `std::accumulate`, etc.).
-5. Use lambdas extensively for filtering, counting, and transforming data.
-6. Optionally, reimplement part of your pipeline using `C++20` ranges for cleaner code.
+* Parse lines using `std::ifstream` and `std::getline`.  
+* Tokenize text using `std::stringstream` or `std::ranges::views::split`.  
+* Compute:
+  * Word frequency (`std::unordered_map`)
+  * Average word length (`std::accumulate`)
+  * Most frequent word(s)
+* Display sorted results using STL algorithms and iterators.
 
 ### Sample Input
 
-```cpp
-the quick brown fox jumps over the lazy dog the fox
+```plain-text
+C++ STL makes coding elegant and efficient.
+The STL provides containers, iterators, algorithms, and function objects.
+Mastering STL is key to writing modern C++ code.
+C++ STL is powerful.
 ```
 
 ### Sample Output
 
-```cpp
-Total words: 10
-Unique words: 8
-Most frequent: "the" (3 times)
-Least frequent: "brown", "lazy", "dog", ... (1 time)
-Average word length: 3.8
-Median word length: 4
-Mode word length: 3
+```bash
+$ ./data_analyzer data/sample.csv
+Total words: 120
+Unique words: 53
+Average length: 4.7
+Most frequent word: "data" (12 times)
+
+Top 10 words (sorted):
+ 1. "data" — 12 times
+ 2. "the"  — 10 times
+ 3. "and"  — 8 times
+ 4. "of"   — 7 times
+ 5. "to"   — 6 times
+ 6. "is"   — 5 times
+ 7. "in"   — 4 times
+ 8. "this" — 3 times
+ 9. "with" — 3 times
+10. "for"  — 2 times
 ```
 
 ### Hints

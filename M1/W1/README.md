@@ -6,7 +6,7 @@ The first week you should focus on mastering essential C++ features (including m
 
 ## Concepts to master
 
-1. **Templates**: 
+1. **Templates**:
 
     A template is a construct that generates an ordinary type or function at compile time based on arguments the user supplies for the template parameters. Templates allow writing generic and type-agnostic code. Instead of rewriting data structures (e.g., `stack`, `queue`) for `int`, `double`, or `std::string`, we can write one generic implementation that works with any type.
 
@@ -86,7 +86,7 @@ The first week you should focus on mastering essential C++ features (including m
    * Explain how reference counting works in `shared_ptr`.
    * Debug memory leak issues raw pointers vs. smart pointers.
 
-4. **Move Semantics & Rule of Five/Zero**: 
+4. **Move Semantics & Rule of Five/Zero**:
 
     `C++11` introduced move semantics to optimize performance by avoiding deep copies of temporary objects. It **casts** (interprets) an object into an **rvalue reference** (`T&&`) to signal that the object's resources can be **transferred**. This is useful for optimizing performance by avoiding unnecessary copies.
 
