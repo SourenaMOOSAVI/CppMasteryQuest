@@ -1,0 +1,14 @@
+# Ignore local build directory created by CMake
+build/
+
+# Common CMake files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Ignore editor/temp files
+*.swp
+*~
+.vscode/
+.idea/
