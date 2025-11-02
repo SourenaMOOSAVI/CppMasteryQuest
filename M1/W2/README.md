@@ -128,7 +128,7 @@ By the end of this week, you’ll build a Data Analyzer that processes text or C
 
 ## Challenge: Data Analyzer
 
-Build a **Data Analyzer** that reads numerical data from a text or CSV file and computes various statistics using STL containers and algorithms.
+Build a **Data Analyzer** that processes data from a text or CSV file and computes various statistics using STL containers and algorithms.
 
 ### Features/Requirements
 

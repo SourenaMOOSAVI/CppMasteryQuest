@@ -4,18 +4,18 @@ The following structure ensures that the data analysis tool is clean, modular an
 
 ```bash
 DataAnalyzer/
-├── CMakeLists.txt         # build + test wiring
+├── CMakeLists.txt         # CMake config: builds executable, fetches Catch2, sets up tests
 ├── include/
-│   ├── Analyzer.h         # public API, pragma once, namespace da
-│   └── utils.h
+│   ├── Analyzer.h         # Public API: Analyzer class declaration (pragma once, namespace da)
+│   └── utils.h            # Utility decls (e.g., cleanWord)
 ├── src/
-│   ├── Analyzer.cpp       # implementation; include only needed headers
-│   └── utils.cpp
-├── main.cpp               # CLI parsing + orchestration
+│   ├── Analyzer.cpp       # Core impl: file reading, tokenization, analysis, printing
+│   └── utils.cpp          # Utility impls (minimal, just cleanWord)
+├── main.cpp               # Entry point: Arg parsing, Analyzer orchestration
 ├── data/
-│   └── sample.csv
+│   └── sample.txt         # Sample input: Multi-line text for testing
 ├── tests/
-│   ├── test_analyzer.cpp  # unit tests
-│   └── test_utils.cpp
-└── README.md
+│   ├── test_analyzer.cpp  # Analyzer unit tests (file-based mocks)
+│   └── test_utils.cpp     # Utils unit tests (simple assertions)
+└── README.md              # This file: Project overview, build/run instructions
 ```
