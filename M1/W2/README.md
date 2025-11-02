@@ -147,12 +147,13 @@ C++ STL makes coding elegant and efficient.
 The STL provides containers, iterators, algorithms, and function objects.
 Mastering STL is key to writing modern C++ code.
 C++ STL is powerful.
+Data, data, data — analyze the data!
 ```
 
 ### Sample Output
 
 ```bash
-$ ./data_analyzer data/sample.csv
+$ ./data_analyzer --input data/sample.csv
 Total words: 120
 Unique words: 53
 Average length: 4.7
