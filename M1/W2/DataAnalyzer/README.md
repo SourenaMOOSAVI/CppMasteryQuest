@@ -19,3 +19,27 @@ DataAnalyzer/
 │   └── test_utils.cpp     # Utils unit tests (simple assertions)
 └── README.md              # This file: Project overview, build/run instructions
 ```
+
+## Key Components
+
+1. Utilities (`include/utils.h` / `src/utils.cpp`):
+
+   Lightweight helper for word normalization. This is the "preprocessing" layer.
+
+2. Analyzer Class (`include/Analyzer.h` / `src/Analyzer.cpp`):
+
+   The heart of the app: Encapsulates file I/O, tokenization, stats computation, and output. Private members: `filename_`, `wordCount_` (`unordered_map` for `O(1)` lookups), `totalWords_ (size_t counter)`.
+
+3. CLI Entry Point (`main.cpp`):
+
+   Simple arg parser (no external lib like Boost.ProgramOptions—keeps it lightweight).
+
+## Build & Run Instructions
+
+```bash
+mkdir build && cd build
+cmake ..  # Or cmake -B build -S . for out-of-tree
+cmake --build .  # Builds data_analyzer and tests
+ctest -V  # Runs tests
+./data_analyzer --input ../data/sample.txt  # Run the analyzer
+```
