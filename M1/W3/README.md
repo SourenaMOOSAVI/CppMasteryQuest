@@ -85,3 +85,81 @@ By the end of this week, you’ll implement a Custom Smart Pointer and Memory Po
     * Explain dynamic memory allocation in C++.
     * Discuss the importance of memory alignment.
     * Identify potential memory leaks in code snippets.
+
+3. **Smart Pointers Internals**
+    Smart pointers (`std::unique_ptr`, `std::shared_ptr`, `std::weak_ptr`) automate memory management by encapsulating raw pointers and managing their lifetimes. Understanding their internals helps in choosing the right smart pointer for the job and avoiding pitfalls like cyclic references.
+
+    **Example:**
+
+    ```cpp
+    #include <iostream>
+    #include <memory>
+
+    struct Node {
+        int value;
+        std::shared_ptr<Node> next;
+        Node(int val) : value(val), next(nullptr) {}
+    };
+
+    int main() {
+        auto head = std::make_shared<Node>(1);
+        head->next = std::make_shared<Node>(2);
+        std::cout << head->value << " -> " << head->next->value << '\n';
+    }
+    ```
+
+    **Interview Mini Q&A:**
+    * ❓ *How does `std::shared_ptr` manage reference counting?*
+      * `std::shared_ptr` maintains a control block that tracks the number of shared owners. When a new `shared_ptr` is created from an existing one, the count increments; when a `shared_ptr` is destroyed, the count decrements. When the count reaches zero, the managed object is deleted.
+    * ❓ *What is a cyclic reference and how can it be avoided?*
+      * A cyclic reference occurs when two or more `shared_ptr`s reference each other, preventing their memory from being freed. It can be avoided using `std::weak_ptr` to break the cycle.
+    * ❓ *When should you use `std::unique_ptr` over `std::shared_ptr`?*
+      * Use `std::unique_ptr` when you want exclusive ownership of a resource, as it has lower overhead and better performance than `std::shared_ptr`.
+
+    **Types of interview questions you might face:**
+    * Explain how smart pointers work in C++.
+    * Discuss scenarios for using different types of smart pointers.
+    * Analyze code for potential memory management issues with smart pointers.
+
+4. **Custom Allocators and Memory Pooling**
+    Custom allocators allow fine-tuned control over memory allocation strategies, which can be customized for specific performance needs.. Memory pooling is a technique where a pool of pre-allocated memory blocks is maintained to reduce allocation overhead and fragmentation.
+
+    **Example:**
+
+    ```cpp
+    #include <memory>
+    #include <vector>
+
+    template<typename T>
+    struct SimpleAllocator {
+        using value_type = T;
+
+        T* allocate(std::size_t n) {
+            std::cout << "Allocating " << n << " objects\n";
+            return static_cast<T*>(::operator new(n * sizeof(T)));
+        }
+
+        void deallocate(T* p, std::size_t) noexcept {
+            ::operator delete(p);
+        }
+    };
+
+    int main() {
+        std::vector<int, SimpleAllocator<int>> v(10);
+    }
+    ```
+
+    **Interview Mini Q&A:**
+    * ❓ *What are the benefits of using custom allocators?*
+      * Custom allocators can reduce fragmentation, improve cache locality, and optimize allocation/deallocation patterns for specific workloads.
+    * ❓ *Why are custom allocators used in performance-critical systems?*
+      * They minimize fragmentation, reduce system calls, and optimize cache usage.
+    * ❓ *How does memory pooling improve performance?*
+      * Memory pooling reduces the overhead of frequent allocations/deallocations by reusing pre-allocated memory blocks, leading to faster memory operations and reduced fragmentation.
+    * ❓ *When would you consider implementing a custom allocator?*
+      * When standard allocators do not meet performance requirements, such as in high-frequency allocation scenarios or when specific alignment or locality optimizations are needed.
+
+    **Types of interview questions you might face:**
+    * Explain the concept of custom allocators in C++.
+    * Discuss the advantages of memory pooling.
+    * Analyze scenarios where custom memory management strategies are beneficial.
