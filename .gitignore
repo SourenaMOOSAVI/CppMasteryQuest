@@ -3,6 +3,10 @@ build/
 **/build/
 cmake-build-*/
 
+# Cache directories
+.cache/
+**/.cache/
+
 # CMake generated files
 CMakeFiles/
 CMakeCache.txt
