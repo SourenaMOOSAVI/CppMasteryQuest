@@ -2,16 +2,17 @@
 
 Welcome to Week 3 of the CppMasteryQuest! This week is all about understanding how `C++` handles memory — from allocation to ownership, cache behavior, and smart pointer internals.
 
-In real-world systems (and interviews), strong memory fundamentals separate an average developer from a true C++ engineer.
-Here, you’ll go beyond using new/delete — you’ll understand when and why memory is allocated, freed, and optimized.
-By the end of this week, you’ll implement a Custom Smart Pointer and Memory Pool Manager to solidify your understanding of memory management in C++.
+In real-world systems (and interviews), strong memory fundamentals separate an average developer from a true `C++` engineer.
+Here, you’ll go beyond using `new`/`delete` — you’ll understand when and why memory is allocated, freed, and optimized.
+By the end of this week, you’ll implement a Custom Smart Pointer and Memory Pool Manager to solidify your understanding of memory management in `C++`.
 
 ---
 
 ## Concepts Covered
 
-1. **RAII (Resource Acquisition Is Initialization)**
-    RAII is a core C++ idiom where resource allocation is tied to object lifetime. When an object is created, it acquires resources (like memory), and when it goes out of scope, it releases them automatically. RAII ensures resources are properly released when an object goes out of scope. It’s the foundation of modern memory safety in C++.
+1. **RAII (Resource Acquisition Is Initialization) :**
+
+    RAII is a core `C++` idiom where resource allocation is tied to object lifetime. When an object is created, it acquires resources (like memory), and when it goes out of scope, it releases them automatically. RAII ensures resources are properly released when an object goes out of scope. It’s the foundation of modern memory safety in `C++`.
 
     **Example:**
 
@@ -51,7 +52,8 @@ By the end of this week, you’ll implement a Custom Smart Pointer and Memory Po
     * Discuss the benefits of RAII in resource management.
     * Analyze code snippets for proper RAII usage.
 
-2. **Dynamic Allocation and Alignment**
+2. **Dynamic Allocation and Alignment :**
+
     Dynamic allocation happens on the heap using `new`, `delete`, or allocators. Understanding how memory is allocated on the heap, including alignment requirements, is crucial for performance and correctness. Proper alignment ensures data fits CPU boundaries for optimal access.
 
     **Example:**
@@ -82,11 +84,12 @@ By the end of this week, you’ll implement a Custom Smart Pointer and Memory Po
       * Memory leaks occur when allocated memory is not freed. They can be prevented using RAII, smart pointers, and careful resource management.
 
     **Types of interview questions you might face:**
-    * Explain dynamic memory allocation in C++.
+    * Explain dynamic memory allocation in `C++`.
     * Discuss the importance of memory alignment.
     * Identify potential memory leaks in code snippets.
 
-3. **Smart Pointers Internals**
+3. **Smart Pointers Internals :**
+
     Smart pointers (`std::unique_ptr`, `std::shared_ptr`, `std::weak_ptr`) automate memory management by encapsulating raw pointers and managing their lifetimes. Understanding their internals helps in choosing the right smart pointer for the job and avoiding pitfalls like cyclic references.
 
     **Example:**
@@ -117,11 +120,12 @@ By the end of this week, you’ll implement a Custom Smart Pointer and Memory Po
       * Use `std::unique_ptr` when you want exclusive ownership of a resource, as it has lower overhead and better performance than `std::shared_ptr`.
 
     **Types of interview questions you might face:**
-    * Explain how smart pointers work in C++.
+    * Explain how smart pointers work in `C++`.
     * Discuss scenarios for using different types of smart pointers.
     * Analyze code for potential memory management issues with smart pointers.
 
-4. **Custom Allocators and Memory Pooling**
+4. **Custom Allocators and Memory Pooling :**
+
     Custom allocators allow fine-tuned control over memory allocation strategies, which can be customized for specific performance needs.. Memory pooling is a technique where a pool of pre-allocated memory blocks is maintained to reduce allocation overhead and fragmentation.
 
     **Example:**
@@ -163,6 +167,8 @@ By the end of this week, you’ll implement a Custom Smart Pointer and Memory Po
     * Explain the concept of custom allocators in C++.
     * Discuss the advantages of memory pooling.
     * Analyze scenarios where custom memory management strategies are beneficial.
+
+---
 
 ## Challenge — Memory Manager Toolkit
 
