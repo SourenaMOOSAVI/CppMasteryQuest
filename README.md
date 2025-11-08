@@ -31,7 +31,7 @@ Each month focuses on specific topics, challenges, and projects that build on on
   Containers, iterators, algorithms, lambdas, complexity analysis, and ranges (`C++20`).  
   *Challenge:* Build a **Data Analyzer** that ingests text/CSV files and computes stats using STL.
 
-- **[Week 3: Memory Mastery](Month1/Week3/README.md)**  
+- **[Week 3: Memory Mastery](https://github.com/SourenaMOOSAVI/CppMasteryQuest/blob/main/M1/W3/README.md#memory-mastery)**  
   Dynamic allocation, alignment, caching, allocators, and smart pointer internals.  
   *Challenge:* Implement your own `shared_ptr`, then design a custom allocator and a memory pool.
 
