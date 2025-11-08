@@ -126,7 +126,7 @@ By the end of this week, you’ll implement a Custom Smart Pointer and Memory Po
 
 4. **Custom Allocators and Memory Pooling :**
 
-    Custom allocators allow fine-tuned control over memory allocation strategies, which can be customized for specific performance needs.. Memory pooling is a technique where a pool of pre-allocated memory blocks is maintained to reduce allocation overhead and fragmentation.
+    Custom allocators allow fine-tuned control over memory allocation strategies, which can be customized for specific performance needs.Memory pooling is a technique where a pool of pre-allocated memory blocks is maintained to reduce allocation overhead and fragmentation.
 
     **Example:**
 
@@ -164,7 +164,7 @@ By the end of this week, you’ll implement a Custom Smart Pointer and Memory Po
       * When standard allocators do not meet performance requirements, such as in high-frequency allocation scenarios or when specific alignment or locality optimizations are needed.
 
     **Types of interview questions you might face:**
-    * Explain the concept of custom allocators in C++.
+    * Explain the concept of custom allocators in `C++`.
     * Discuss the advantages of memory pooling.
     * Analyze scenarios where custom memory management strategies are beneficial.
 
