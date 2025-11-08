@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wall -Wextra -g CMakeFiles/SharedPtrTests.dir/tests/SharedPtrTests.cpp.o -o SharedPtrTests 

@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wall -Wextra -g CMakeFiles/MemoryPoolTests.dir/tests/MemoryPoolTests.cpp.o -o MemoryPoolTests 

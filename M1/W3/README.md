@@ -163,3 +163,19 @@ By the end of this week, you’ll implement a Custom Smart Pointer and Memory Po
     * Explain the concept of custom allocators in C++.
     * Discuss the advantages of memory pooling.
     * Analyze scenarios where custom memory management strategies are beneficial.
+
+## Challenge — Memory Manager Toolkit
+
+You’ll build your own memory management mini-library with three modules:
+
+1. **Custom Smart Pointer `MySharedPtr<T>`**:
+    * Implement a reference-counted smart pointer.
+    * Support copy/move semantics and proper cleanup.
+    * (Optional) Add weak reference support.
+2. **Memory Pool Manager**:
+    * Manage a fixed-size memory block pool.
+    * Support allocate/release operations.
+    * Optionally integrate with your allocator.
+3. **`SimpleAllocator<T>`**:
+    * Implement a minimal custom allocator compatible with STL containers.
+    * Track allocation and deallocation calls.

@@ -1,4 +1,4 @@
-# Proposed Project Structure
+# Project Structure
 
 The following structure ensures that the data analysis tool is clean, modular and scalable. The proposed structure is based on principles of **modularity**, **single responsibility**, and **separation of concerns**, which align with best practices in software engineering.
 

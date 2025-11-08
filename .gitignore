@@ -1,0 +1,67 @@
+# Build directories
+build/
+**/build/
+cmake-build-*/
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+CTestTestfile.cmake
+Testing/
+compile_commands.json
+
+# Binaries and object files
+*.o
+*.obj
+*.lo
+*.la
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+*.elf
+*.bin
+
+# Logs, temporary files, backups
+*.log
+*.tmp
+*.temp
+*~
+*.swp
+*.swo
+
+# IDE/editor folders and files
+.vscode/
+.idea/
+*.suo
+*.user
+*.userprefs
+*.project
+*.classpath
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Package / virtual env
+node_modules/
+venv/
+env/
+.env
+
+# Misc
+tags
+*.gz
+*.zip
+
+# Allow local overrides (optional)
+# !/some-allowed-file

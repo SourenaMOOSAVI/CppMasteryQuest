@@ -1,5 +1,0 @@
-/home/poeticdevil/bin/cppMastery/M1/W3/CustomSmartPointer/build/CMakeFiles/SharedPtrTests.dir
-/home/poeticdevil/bin/cppMastery/M1/W3/CustomSmartPointer/build/CMakeFiles/MemoryPoolTests.dir
-/home/poeticdevil/bin/cppMastery/M1/W3/CustomSmartPointer/build/CMakeFiles/WeakPtrTests.dir
-/home/poeticdevil/bin/cppMastery/M1/W3/CustomSmartPointer/build/CMakeFiles/edit_cache.dir
-/home/poeticdevil/bin/cppMastery/M1/W3/CustomSmartPointer/build/CMakeFiles/rebuild_cache.dir
