@@ -164,7 +164,7 @@ Here’s how you can help:
 2. Create a branch (`feature/add-new-challenge`).
 3. Submit a Pull Request describing your changes clearly.
 
-## You can contribute:
+## You can contribute
 
 - New code examples or optimized implementations.
 - Benchmark comparisons between different approaches.
