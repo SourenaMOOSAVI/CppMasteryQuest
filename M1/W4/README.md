@@ -189,7 +189,11 @@ This week, you’ll design and build a **runtime-loadable plugin framework** —
    - JSON/YAML plugin manifest.  
    - Plugin dependency management.
 
+---
+
 ## Learning Outcomes
+
+By the end of this week, you will be able to:
 
 - Understand **inheritance**, **composition**, and **dynamic dispatch**
 - Apply the **SOLID principles** to real code
