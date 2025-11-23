@@ -188,3 +188,13 @@ This week, you’ll design and build a runtime-loadable plugin framework — sim
    - Hot reloading.  
    - JSON/YAML plugin manifest.  
    - Plugin dependency management.
+
+## Learning Outcomes
+
+- Understand inheritance, composition, and dynamic dispatch
+- Apply the SOLID principles to real code
+- Use interfaces + factories to decouple implementations
+- Build a runtime plugin loader using:
+- dlopen() / dlsym() on Linux
+- (Windows-ready via LoadLibrary, though we focus mainly on Linux)
+- Demonstrate how applications discover and load plugins at runtime, without recompiling the main executable
