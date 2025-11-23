@@ -162,26 +162,26 @@ By the end of this week, you’ll architect and build a full Plugin System with 
 
 ## Challenge — Modular Plugin System
 
-This week, you’ll design and build a runtime-loadable plugin framework — similar to how VSCode extensions, Photoshop plugins, and Blender addons work.
+This week, you’ll design and build a **runtime-loadable plugin framework** — similar to how **VSCode extensions**, **Photoshop plugins**, and **Blender addons** work.
 
 ### Your Plugin System Will Support
 
-1. **Plugin Interface (IPlugin)**  
+1. **Plugin Interface (`IPlugin`)**  
    - Pure virtual base class.  
    - Defines the minimum contract for plugins.
 2. **Dynamic Loading**  
-   - On Linux: dlopen, dlsym, dlclose.  
-   - On Windows: LoadLibrary, GetProcAddress, FreeLibrary.
+   - On Linux: `dlopen`, `dlsym`, `dlclose`.  
+   - On Windows: `LoadLibrary`, `GetProcAddress`, `FreeLibrary`.
 3. **Factory Function Per Plugin**  
-   - Each plugin must export a createPlugin() function.
+   - Each plugin must export a `createPlugin()` function.
 4. **Plugin Manager**  
    - Loads shared libraries.  
    - Instantiates plugin instances.  
    - Maintains plugin lifetime.
 5. **Two Sample Plugins**  
    - Example:  
-     - LoggerPlugin  
-     - MathPlugin  
+     - `LoggerPlugin`  
+     - `MathPlugin`
      - or anything creative.
 6. **Optional Stretch Goals**  
    - Plugin metadata system.  
@@ -191,10 +191,12 @@ This week, you’ll design and build a runtime-loadable plugin framework — sim
 
 ## Learning Outcomes
 
-- Understand inheritance, composition, and dynamic dispatch
-- Apply the SOLID principles to real code
-- Use interfaces + factories to decouple implementations
-- Build a runtime plugin loader using:
-- dlopen() / dlsym() on Linux
-- (Windows-ready via LoadLibrary, though we focus mainly on Linux)
+- Understand **inheritance**, **composition**, and **dynamic dispatch**
+- Apply the **SOLID principles** to real code
+- Use **interfaces + factories** to decouple implementations
+- Build a **runtime plugin loader** using:
+
+  - `dlopen()` / `dlsym()` on Linux
+  - (Windows-ready via `LoadLibrary`, though we focus mainly on Linux)
+
 - Demonstrate how applications discover and load plugins at runtime, without recompiling the main executable
