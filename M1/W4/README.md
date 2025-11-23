@@ -1,70 +1,190 @@
-# Object-Oriented Programming (OOP) : Zoo Management System
+# OOP Architecture & Plugin Engineering
 
-Develop a Zoo Management System using Object-Oriented Programming principles. The system will manage different types of animals, their habitats, feeding schedules, and visitors. This project will focus on creating a hierarchy of classes, leveraging *inheritance*, *polymorphism*, and *encapsulation*, and applying design patterns for effective code organization.
+Welcome to Week 4 of the CppMasteryQuest!  
+This week, you move beyond syntax and memory fundamentals — into architecture.  
+Modern C++ software (games, compilers, IDEs, scientific tools, trading engines…) all rely heavily on good OOP design.  
+Knowing OOP superficially is easy — but mastering it, understanding when to use inheritance, how to design abstractions, and why SOLID principles matter, is what makes you a real C++ engineer.  
 
-## Concepts to Master
+By the end of this week, you’ll architect and build a full Plugin System with dynamically loaded modules — the same concept behind how browsers, Unreal Engine, VSCode extensions, and real-world applications load features at runtime.
 
-1. **Core OOP Principles**:
-    * **Encapsulation**: Encapsulation is the bundling of data and methods that operate on that data within a single unit or class. It restricts direct access to some of the object's components, which can prevent the accidental modification of data. For example, using private variables and providing public getter and setter methods.
-    * **Inheritance**: Inheritance is a mechanism where a new class inherits properties and behavior (methods) from an existing class. This promotes code reusability. For example, a `Bird` class can inherit from an `Animal` class.
-    * **Polymorphism**: Polymorphism allows objects of different classes to be treated as objects of a common super class. It is typically achieved through method overriding (runtime polymorphism) or method overloading (compile-time polymorphism). For example, different animal classes can have their own implementation of a `makeSound` method.
-    * **Abstraction**: Abstraction is the concept of hiding the complex implementation details and showing only the essential features of the object. It helps in reducing programming complexity and effort. For example, an `Animal` class can have an abstract method `makeSound` that is implemented by its subclasses.
+---
 
-2. **Abstract Classes and Interfaces**:
-    * Abstract classes cannot be instantiated and are often used to define a common interface for derived classes. They can contain both abstract methods (without implementation) and concrete methods (with implementation).
-    * Interfaces define a contract that implementing classes must follow. They can only contain method signatures and static final variables (constants).
+## Concepts Covered
 
-3. **Design Patterns**:
-    * Common design patterns include Singleton, Factory, Observer, and Strategy. These patterns provide solutions to common software design problems and help to write more maintainable and scalable code.
+1. **Object-Oriented Design Fundamentals**
 
-4. **Composition vs. Inheritance**:
-    * Composition involves building complex types by combining objects of other types, rather than inheriting from a base class. It promotes greater flexibility and reusability. For example, a `Zoo` class can have a list of `Animal` objects rather than inheriting from an `Animal` class.
+    Object-Oriented Programming provides a structured way to model systems using objects, interfaces, and relationships. This week, you’ll refine your understanding not just of syntax, but architecture.
 
-5. **Relationships between Classes**:
-    * Relationships include association, aggregation, and composition. Association is a general relationship between classes. Aggregation is a special form of association with a whole-part relationship but without ownership. Composition is a stronger form of aggregation with ownership, meaning the lifetime of the part is managed by the whole.
+   **Core Concepts**
 
-6. **OOP Best Practices**:
-    * Follow the SOLID principles (Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion).
-    * Use meaningful names for classes, methods, and variables.
-    * Keep classes focused on a single responsibility.
-    * Favor composition over inheritance where appropriate.
-    * Write unit tests to ensure code correctness.
-    * Document code to improve readability and maintainability.
+    - **Encapsulation** — hide internal details and expose a clean API.
+    - **Inheritance** — reuse behavior and define hierarchical relationships.
+    - **Polymorphism** — write code that works uniformly for all derived types.
+    - **Abstraction** — strip unnecessary details and expose essential operations.
 
-## How to run the project
+   **Example (Pure Virtual Interface)**
 
-1. **Clone the repository**:
-    Clone the repository to your local machine using the following command:
-
-    ```sh
-    git clone https://github.com/sourenamoosavi/zoo-management-system.git
-    cd zoo-management-system
+    ```cpp
+    class Plugin {
+    public:
+        virtual void initialize() = 0;
+        virtual std::string name() const = 0;
+        virtual ~Plugin() = default;
+    };
     ```
 
-2. **Create the build directory**:
+    **Interview Mini Q&A :**
 
-    ```sh
-    mkdir build && cd build
+    - ❓ **What is the difference between interface inheritance and implementation inheritance?**  
+      Interface inheritance defines what is done; implementation inheritance defines how it's done. Prefer interface inheritance for extensibility.
+    - ❓ **Why should destructors be virtual in polymorphic base classes?**  
+      To ensure proper cleanup of derived objects through base pointers.
+    - ❓ **When should you avoid inheritance?**  
+      Avoid inheritance when “is-a” is not true, or when behavior does not need to be overridden.
+
+    **Types of interview questions**
+
+    - Explain the difference between composition and inheritance.
+    - What are the downsides of deep inheritance hierarchies?
+    - Identify violations of encapsulation in a code snippet.
+
+2. **SOLID Principles :**
+
+    SOLID is not about “rules” — it is about writing code that is flexible, testable, and extendable without breaking existing behavior.
+
+    - **S — Single Responsibility**  
+        Each class should do one thing and do it well.  
+        A plugin loader should load plugins, not manage logs or config.
+    - **O — Open/Closed**  
+        Your system should allow adding new plugins without modifying the loader.
+    - **L — Liskov Substitution**  
+        Derived classes should be usable anywhere the base class is expected.
+    - **I — Interface Segregation**  
+        Prefer small, specialized interfaces (e.g., Renderable, Scriptable, Serializable) over large monolithic ones.
+    - **D — Dependency Inversion**  
+        High-level code depends on abstractions — not concrete implementations.
+
+   **Example (Dependency Inversion)**
+
+    ```cpp
+    class ILogger {
+    public:
+        virtual void log(const std::string&) = 0;
+    };
+
+    class PluginManager {
+        ILogger& logger_;
+    public:
+        PluginManager(ILogger& logger) : logger_(logger) {}
+    };
     ```
 
-3. **Build the project**:
-    Ensure you have a C++ compiler installed. Then, run the following command to compile the project:
+    **Interview Mini Q&A:**
+    - ❓ *Which SOLID principle encourages designing small interfaces?*
+      - Interface Segregation Principle (ISP).
+    - ❓ *What does “Open for extension, closed for modification” mean?*
+      - You can add new behavior (like new plugins) without altering existing classes.
+    - ❓ *What is a good sign that DIP is being followed?* 
+      - Core logic depends only on interfaces, not specific implementations.
 
-    ```sh
-    cmake ..
-    make
+    **Types of interview questions**
+
+    - Identify the SOLID principle violated in a design.
+    - Refactor a class to follow SRP or OCP.
+    - Explain how abstract interfaces improve testability.
+
+3. **Polymorphism & Dynamic Dispatch**
+
+    Polymorphism enables runtime flexibility — the cornerstone of plugin systems.
+
+   **Example (Run-Time Polymorphism)**
+
+    ```cpp
+    void runPlugin(Plugin* p) {
+        p->initialize();
+        std::cout << "Running: " << p->name() << "\n";
+    }
     ```
 
-4. **Run the executable**:
-    After building the project, you can run the executable:
+    Here, the exact implementation depends on the derived type loaded at runtime.
 
-    ```sh
-    ./test/zoo_main
+    **Interview Mini Q&A**
+
+    - ❓ *What is dynamic dispatch?* 
+      - The mechanism that selects which overridden method to call at runtime.
+    - ❓ *When is polymorphism cost acceptable?* 
+      - Whenever extensibility outweighs the small overhead of virtual calls.
+    - ❓ *Why avoid non-virtual destructors in polymorphic classes?*
+      - Because deleting a derived object through a base pointer causes UB.
+
+    **Types of interview questions**
+
+    - Explain virtual tables and vptrs.
+    - Identify incorrect polymorphic design.
+    - Compare static vs dynamic polymorphism.
+
+4. **Design Patterns (OOP Essentials)**
+
+    Real-world C++ uses patterns to create flexible architectures.  
+    Patterns you will directly use in the challenge:
+
+    - **Factory Pattern**  
+        To instantiate plugins without knowing their concrete type.
+    - **Strategy Pattern**  
+        Allow replacing algorithms at runtime.
+    - **Interface Pattern**  
+        Your plugins will implement a pure virtual class.
+    - **Singleton (optional)**  
+        For plugin registry or configuration managers (use sparingly).
+
+    **Example — Factory**
+
+    ```cpp
+    extern "C" Plugin* createPlugin(); 
     ```
 
-5. **Run tests**:
-    To ensure everything is working correctly, run the tests:
+    This export allows dynamic loading via dlopen/dlsym (Linux) or LoadLibrary (Windows).
 
-    ```sh
-    ./test/zoo_test
-    ```
+    **Interview Mini Q&A :**
+
+    - ❓ *Why are factories useful in plugin systems?*
+        They decouple instantiation from implementation.
+    - ❓ *Why avoid singletons unless necessary?*
+        They reduce testability and introduce global state.
+    - ❓ *What’s the advantage of the Strategy pattern?*
+        You can change an object’s behavior without modifying its class.
+
+    **Types of interview questions**
+
+    - Describe a real-world use of Strategy.
+    - Identify inappropriate uses of singletons.
+    - Explain why abstract factories improve modularity.
+
+## Challenge — Modular Plugin System
+
+This week, you’ll design and build a runtime-loadable plugin framework — similar to how VSCode extensions, Photoshop plugins, and Blender addons work.
+
+### Your Plugin System Will Support
+
+1. **Plugin Interface (IPlugin)**  
+   - Pure virtual base class.  
+   - Defines the minimum contract for plugins.
+2. **Dynamic Loading**  
+   - On Linux: dlopen, dlsym, dlclose.  
+   - On Windows: LoadLibrary, GetProcAddress, FreeLibrary.
+3. **Factory Function Per Plugin**  
+   - Each plugin must export a createPlugin() function.
+4. **Plugin Manager**  
+   - Loads shared libraries.  
+   - Instantiates plugin instances.  
+   - Maintains plugin lifetime.
+5. **Two Sample Plugins**  
+   - Example:  
+     - LoggerPlugin  
+     - MathPlugin  
+     - or anything creative.
+6. **Optional Stretch Goals**  
+   - Plugin metadata system.  
+   - Hot reloading.  
+   - JSON/YAML plugin manifest.  
+   - Plugin dependency management.
