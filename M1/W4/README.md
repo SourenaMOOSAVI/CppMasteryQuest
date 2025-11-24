@@ -84,7 +84,7 @@ By the end of this week, you’ll architect and build a full Plugin System with 
       - Interface Segregation Principle (ISP).
     - ❓ *What does “Open for extension, closed for modification” mean?*
       - You can add new behavior (like new plugins) without altering existing classes.
-    - ❓ *What is a good sign that DIP is being followed?* 
+    - ❓ *What is a good sign that DIP is being followed?*
       - Core logic depends only on interfaces, not specific implementations.
 
     **Types of interview questions**
@@ -110,16 +110,16 @@ By the end of this week, you’ll architect and build a full Plugin System with 
 
     **Interview Mini Q&A**
 
-    - ❓ *What is dynamic dispatch?* 
+    - ❓ *What is dynamic dispatch?*
       - The mechanism that selects which overridden method to call at runtime.
-    - ❓ *When is polymorphism cost acceptable?* 
+    - ❓ *When is polymorphism cost acceptable?*
       - Whenever extensibility outweighs the small overhead of virtual calls.
     - ❓ *Why avoid non-virtual destructors in polymorphic classes?*
       - Because deleting a derived object through a base pointer causes UB.
 
     **Types of interview questions**
 
-    - Explain virtual tables and vptrs.
+    - Explain virtual tables and `vptrs`.
     - Identify incorrect polymorphic design.
     - Compare static vs dynamic polymorphism.
 
@@ -143,7 +143,7 @@ By the end of this week, you’ll architect and build a full Plugin System with 
     extern "C" Plugin* createPlugin(); 
     ```
 
-    This export allows dynamic loading via dlopen/dlsym (Linux) or LoadLibrary (Windows).
+    This export allows dynamic loading via `dlopen`/`dlsym` (Linux) or `LoadLibrary` (Windows).
 
     **Interview Mini Q&A :**
 
