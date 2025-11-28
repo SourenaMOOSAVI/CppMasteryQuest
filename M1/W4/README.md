@@ -40,11 +40,11 @@ By the end of this week, you’ll architect and build a full Plugin System with 
     **Interview Mini Q&A :**
 
     - ❓ **What is the difference between interface inheritance and implementation inheritance?**  
-      Interface inheritance specifies what methods a class must have (e.g., via pure virtual functions), promoting loose coupling and extensibility. Implementation inheritance provides how those methods work (with actual code), which can make changes harder if overused. Prefer interfaces for flexibility.
+      - Interface inheritance specifies what methods a class must have (e.g., via pure virtual functions), promoting loose coupling and extensibility. Implementation inheritance provides how those methods work (with actual code), which can make changes harder if overused. Prefer interfaces for flexibility.
     - ❓ **Why make destructors virtual in polymorphic base classes?**  
-      Without a virtual destructor, deleting a derived object through a base pointer calls only the base destructor, leaking resources. A virtual one ensures the full derived-class cleanup.
+      - Without a virtual destructor, deleting a derived object through a base pointer calls only the base destructor, leaking resources. A virtual one ensures the full derived-class cleanup.
     - ❓ **When should you avoid inheritance?**  
-      Skip it if the "is-a" relationship doesn't hold (e.g., a Square isn't truly a special Rectangle due to conflicting behaviors) or if you just need to reuse code without overriding—use composition (e.g., "has-a" relationships) instead for better modularity.
+      - Skip it if the "is-a" relationship doesn't hold (e.g., a Square isn't truly a special Rectangle due to conflicting behaviors) or if you just need to reuse code without overriding—use composition (e.g., "has-a" relationships) instead for better modularity.
 
     **Types of interview questions**
 
@@ -57,16 +57,16 @@ By the end of this week, you’ll architect and build a full Plugin System with 
     SOLID is not about “rules” — it is about writing code that is flexible, testable, and extendable without breaking existing behavior.
 
     - **S — Single Responsibility**  
-        Each class should do one thing and do it well.  
-        A plugin loader should load plugins, not manage logs or config.
+        - Each class should do one thing and do it well.  
+        - A plugin loader should load plugins, not manage logs or config.
     - **O — Open/Closed**  
-        Your system should allow adding new plugins without modifying the loader.
+        - Your system should allow adding new plugins without modifying the loader.
     - **L — Liskov Substitution**  
-        Derived classes should be usable anywhere the base class is expected.
+        - Derived classes should be usable anywhere the base class is expected.
     - **I — Interface Segregation**  
-        Prefer small, specialized interfaces (e.g., Renderable, Scriptable, Serializable) over large monolithic ones.
+        - Prefer small, specialized interfaces (e.g., Renderable, Scriptable, Serializable) over large monolithic ones.
     - **D — Dependency Inversion**  
-        High-level code depends on abstractions — not concrete implementations.
+        - High-level code depends on abstractions — not concrete implementations.
 
    **Example (Dependency Inversion)**
 
