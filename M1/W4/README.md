@@ -152,11 +152,11 @@ By the end of this week, you’ll architect and build a full Plugin System with 
     **Interview Mini Q&A :**
 
     - ❓ *Why are factories useful in plugin systems?*
-        They decouple instantiation from implementation.
+      - They decouple instantiation from implementation.
     - ❓ *Why avoid singletons unless necessary?*
-        They reduce testability and introduce global state.
+      - They reduce testability and introduce global state.
     - ❓ *What’s the advantage of the Strategy pattern?*
-        You can change an object’s behavior without modifying its class.
+      - You can change an object’s behavior without modifying its class.
 
     **Types of interview questions**
 
