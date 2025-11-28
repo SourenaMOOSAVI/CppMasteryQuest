@@ -23,6 +23,7 @@ By the end of this week, you’ll architect and build a full Plugin System with 
     - **Abstraction** — Focus on essential features while ignoring irrelevant details, often via abstract classes or interfaces.
 
    **Example (Pure Virtual Interface)**
+
    A pure virtual interface (or abstract base class) defines a contract that derived classes must implement, enforcing polymorphism without providing code. Here's a C++ example for a plugin system:
 
     ```cpp
@@ -35,6 +36,7 @@ By the end of this week, you’ll architect and build a full Plugin System with 
     ```
 
    Derived classes (e.g., AudioPlugin) inherit from Plugin and provide the required methods, allowing a collection of plugins to be handled uniformly via base pointers.
+
     **Interview Mini Q&A :**
 
     - ❓ **What is the difference between interface inheritance and implementation inheritance?**  
