@@ -164,6 +164,8 @@ By the end of this week, you’ll architect and build a full Plugin System with 
     - Identify inappropriate uses of singletons.
     - Explain why abstract factories improve modularity.
 
+---
+
 ## Challenge — Modular Plugin System
 
 This week, you’ll design and build a **runtime-loadable plugin framework** — similar to how **VSCode extensions**, **Photoshop plugins**, and **Blender addons** work.
