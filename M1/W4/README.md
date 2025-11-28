@@ -13,34 +13,36 @@ By the end of this week, you’ll architect and build a full Plugin System with 
 
 1. **Object-Oriented Design Fundamentals**
 
-    Object-Oriented Programming provides a structured way to model systems using objects, interfaces, and relationships. This week, you’ll refine your understanding not just of syntax, but architecture.
+    Object-Oriented Programming (OOP) models real-world systems using objects that bundle data and behavior, connected through interfaces and hierarchies. This section focuses on key architectural principles beyond basic syntax.
 
    **Core Concepts**
 
-    - **Encapsulation** — hide internal details and expose a clean API.
-    - **Inheritance** — reuse behavior and define hierarchical relationships.
-    - **Polymorphism** — write code that works uniformly for all derived types.
-    - **Abstraction** — strip unnecessary details and expose essential operations.
+    - **Encapsulation** — Bundle data and methods together, hiding internal details behind a simple public interface (API) to protect against misuse.
+    - **Inheritance** — Reuse code from a base class in derived classes, establishing "is-a" relationships (e.g., a Dog is-a Animal).
+    - **Polymorphism** — Treat different objects uniformly via a common interface, allowing derived classes to override base methods for flexible behavior.
+    - **Abstraction** — Focus on essential features while ignoring irrelevant details, often via abstract classes or interfaces.
 
    **Example (Pure Virtual Interface)**
+   A pure virtual interface (or abstract base class) defines a contract that derived classes must implement, enforcing polymorphism without providing code. Here's a C++ example for a plugin system:
 
     ```cpp
-    class Plugin {
+    class Plugin {  // Abstract base class
     public:
-        virtual void initialize() = 0;
-        virtual std::string name() const = 0;
-        virtual ~Plugin() = default;
+        virtual void initialize() = 0;  // Must be implemented by subclasses
+        virtual std::string name() const = 0;  // Must be implemented
+        virtual ~Plugin() = default;  // Virtual destructor for safe polymorphic deletion
     };
     ```
 
+   Derived classes (e.g., AudioPlugin) inherit from Plugin and provide the required methods, allowing a collection of plugins to be handled uniformly via base pointers.
     **Interview Mini Q&A :**
 
     - ❓ **What is the difference between interface inheritance and implementation inheritance?**  
-      Interface inheritance defines what is done; implementation inheritance defines how it's done. Prefer interface inheritance for extensibility.
-    - ❓ **Why should destructors be virtual in polymorphic base classes?**  
-      To ensure proper cleanup of derived objects through base pointers.
+      Interface inheritance specifies what methods a class must have (e.g., via pure virtual functions), promoting loose coupling and extensibility. Implementation inheritance provides how those methods work (with actual code), which can make changes harder if overused. Prefer interfaces for flexibility.
+    - ❓ **Why make destructors virtual in polymorphic base classes?**  
+      Without a virtual destructor, deleting a derived object through a base pointer calls only the base destructor, leaking resources. A virtual one ensures the full derived-class cleanup.
     - ❓ **When should you avoid inheritance?**  
-      Avoid inheritance when “is-a” is not true, or when behavior does not need to be overridden.
+      Skip it if the "is-a" relationship doesn't hold (e.g., a Square isn't truly a special Rectangle due to conflicting behaviors) or if you just need to reuse code without overriding—use composition (e.g., "has-a" relationships) instead for better modularity.
 
     **Types of interview questions**
 
