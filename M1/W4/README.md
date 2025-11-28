@@ -35,7 +35,7 @@ By the end of this week, you’ll architect and build a full Plugin System with 
     };
     ```
 
-   Derived classes (e.g., AudioPlugin) inherit from Plugin and provide the required methods, allowing a collection of plugins to be handled uniformly via base pointers.
+   Derived classes (e.g., System Plugin) inherit from Plugin and provide the required methods, allowing a collection of plugins to be handled uniformly via base pointers.
 
     **Interview Mini Q&A :**
 
