@@ -52,7 +52,7 @@ By the end of this week, you’ll architect and build a full Plugin System with 
     - What are the downsides of deep inheritance hierarchies?
     - Identify violations of encapsulation in a code snippet.
 
-2. **SOLID Principles :**
+2. **SOLID Principles**
 
     SOLID is not about “rules” — it is about writing code that is flexible, testable, and extendable without breaking existing behavior.
 
