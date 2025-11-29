@@ -35,7 +35,7 @@ Each month focuses on specific topics, challenges, and projects that build on on
   Dynamic allocation, alignment, caching, allocators, and smart pointer internals.  
   *Challenge:* Implement your own `shared_ptr`, then design a custom allocator and a memory pool.
 
-- **[Week 4: Object-Oriented Programming (OOP)](Month1/Week4/README.md)**  
+- **[Week 4: Object-Oriented Programming (OOP)](https://github.com/SourenaMOOSAVI/CppMasteryQuest/blob/main/M1/W4/README.md#oop-architecture--plugin-engineering)**  
   Inheritance, polymorphism, SOLID principles, and common design patterns.  
   *Challenge:* Build a **Plugin System** with dynamically loaded modules.
 
