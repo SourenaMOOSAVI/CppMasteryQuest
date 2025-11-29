@@ -35,14 +35,14 @@ By the end of this week, you’ll architect and build a full Plugin System with 
     };
     ```
 
-   Derived classes (e.g., System Plugin) inherit from Plugin and provide the required methods, allowing a collection of plugins to be handled uniformly via base pointers.
+   Derived classes inherit from Plugin and provide the required methods, allowing a collection of plugins to be handled uniformly via base pointers.
 
     **Interview Mini Q&A :**
 
     - ❓ **What is the difference between interface inheritance and implementation inheritance?**  
       - Interface inheritance specifies what methods a class must have (e.g., via pure virtual functions), promoting loose coupling and extensibility. Implementation inheritance provides how those methods work (with actual code), which can make changes harder if overused. Prefer interfaces for flexibility.
     - ❓ **Why make destructors virtual in polymorphic base classes?**  
-      - Without a virtual destructor, deleting a derived object through a base pointer calls only the base destructor, leaking resources. A virtual one ensures the full derived-class cleanup.
+      - Without a virtual destructor, deleting a derived object through a base pointer calls only the base destructor, leaking resources. A virtual one ensures the full derived-class cleanup. Although a virtual destructor is not required but it's a good practice to include it for safety and good design.
     - ❓ **When should you avoid inheritance?**  
       - Skip it if the "is-a" relationship doesn't hold (e.g., a Square isn't truly a special Rectangle due to conflicting behaviors) or if you just need to reuse code without overriding—use composition (e.g., "has-a" relationships) instead for better modularity.
 
