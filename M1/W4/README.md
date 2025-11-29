@@ -35,7 +35,7 @@ By the end of this week, you’ll architect and build a full Plugin System with 
     };
     ```
 
-   Derived classes inherit from Plugin and provide the required methods, allowing a collection of plugins to be handled uniformly via base pointers.
+   Derived classes (e.g., `AudioPlugin`) inherit from Plugin and provide the required methods, allowing a collection of plugins to be handled uniformly via base pointers.
 
     **Interview Mini Q&A :**
 
@@ -99,31 +99,31 @@ By the end of this week, you’ll architect and build a full Plugin System with 
 
 3. **Polymorphism & Dynamic Dispatch**
 
-    Polymorphism enables runtime flexibility — the cornerstone of plugin systems.
+    Polymorphism allows objects of different classes to be treated interchangeably through a common interface, enabling runtime decisions on which method to invoke—essential for extensible systems like plugins, where behavior varies by type without changing client code.
 
    **Example (Run-Time Polymorphism)**
 
     ```cpp
     void runPlugin(Plugin* p) {
-        p->initialize();
-        std::cout << "Running: " << p->name() << "\n";
+        p->initialize();  // Calls derived class's version
+        std::cout << "Running: " << p->name() << "\n";  // Outputs derived-specific name
     }
     ```
 
-    Here, the exact implementation depends on the derived type loaded at runtime.
+    Usage: `runPlugin(new AudioPlugin());` invokes `AudioPlugin::initialize()` dynamically, without knowing the exact type at compile time. This flexibility supports loading plugins from files or configs.
 
     **Interview Mini Q&A**
 
     - ❓ *What is dynamic dispatch?*
-      - The mechanism that selects which overridden method to call at runtime.
+      - It's the runtime process (via virtual function tables, or `vtables`) that determines and calls the appropriate overridden method based on the object's actual type, not the pointer/reference type—contrasting with static (compile-time) binding.
     - ❓ *When is polymorphism cost acceptable?*
-      - Whenever extensibility outweighs the small overhead of virtual calls.
+      - The minor overhead (e.g., indirect jumps via `vtable` lookups) is negligible in modern compilers and worth it for extensibility, such as in frameworks or APIs where new types are added frequently. Avoid in tight performance loops.
     - ❓ *Why avoid non-virtual destructors in polymorphic classes?*
-      - Because deleting a derived object through a base pointer causes UB.
+      - Deleting a derived object through a base pointer with a non-virtual destructor only invokes the base destructor, leading to undefined behavior (UB) like resource leaks. Always make it virtual for proper cleanup.
 
     **Types of interview questions**
 
-    - Explain virtual tables and `vptrs`.
+    - Explain virtual tables (`vtables`) and `vptrs`.
     - Identify incorrect polymorphic design.
     - Compare static vs dynamic polymorphism.
 
